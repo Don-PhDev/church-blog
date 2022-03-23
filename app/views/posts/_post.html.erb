@@ -1,3 +1,5 @@
+<h1>Post</h1>
+
 <div id="<%= dom_id post %>">
   <p>
     <strong>Title:</strong>
@@ -6,6 +8,10 @@
 
   <p>
     <small><%= post.posted_time_passed %></small>
+  </p>
+
+  <p>
+    <strong><%= pluralize(post.comments.count, "comment") %></strong>
   </p>
 
   <p>
