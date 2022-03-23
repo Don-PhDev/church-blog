@@ -1,4 +1,5 @@
 <div id="<%= dom_id comment %>">
-  <p><%= comment.body %></p>
-  <small><%= comment.posted_time_passed.downcase %></small>
+  <p><%= comment.body %>
+    — <small><%= comment.posted_time_passed.downcase.split(" ").drop(1).join(" ") %></small>
+  </p>
  </div>
