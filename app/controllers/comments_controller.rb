@@ -2,8 +2,16 @@ class CommentsController < ApplicationController
   before_action :set_post
 
   def create
-    @post.comments.create(comment_params)
-    redirect_to @post
+    comment = @post.comments.create(comment_params)
+
+    if comment.save
+      flash[:notice] = "Comment was successfully posted"
+      redirect_to @post
+      CommentsMailer.submitted(comment).deliver_later
+    else
+      flash[:alert] = "Comment failed to post"
+      redirect_to @post
+    end
   end
 
   private
