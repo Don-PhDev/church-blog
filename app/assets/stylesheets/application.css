@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.alert-success {
+  color: green;
+}
+
+.alert-danger {
+  color: red;
+}
