@@ -3,6 +3,8 @@ class ApplicationRecord < ActiveRecord::Base
 
   primary_abstract_class
 
+  scope :by_recently_updated, -> { order(updated_at: :desc) }
+
   def posted_time_passed
     if self.updated_at - self.created_at > 1
       "Edited " + time_ago_in_words(self.updated_at) + " ago"
