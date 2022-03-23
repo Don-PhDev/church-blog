@@ -21,3 +21,9 @@
 .alert-danger {
   color: red;
 }
+
+span.hor-divider {
+  display: block;
+  width: 100%;
+  border-top: 1.8px solid #cccccc;
+}
