@@ -23,7 +23,8 @@
 }
 
 span.hor-divider {
-  display: block;
+  display: inline-block;
   width: 100%;
   border-top: 1.8px solid #cccccc;
+  margin: 0.25rem 0 0.625rem;
 }
