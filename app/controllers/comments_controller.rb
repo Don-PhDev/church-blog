@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       redirect_to @post
       CommentsMailer.submitted(comment).deliver_later
     else
-      flash[:alert] = "Comment failed to post"
+      flash[:alert] = "Comment failed to post #{comment.errors.full_messages}"
       redirect_to @post
     end
   end
@@ -20,6 +20,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body).merge(user: current_user)
     end
 end
