@@ -4,11 +4,20 @@
 
 <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %>
-  <%= button_to "Destroy this post", @post, method: :delete %>
-</div>
+<% if current_user == @post.user %>
+  <div>
+    <%= link_to "Edit",
+      edit_post_path(@post),
+      class: "btn btn-primary text-white mb-2"
+    %>
+    <%= button_to "Delete",
+      @post, method: :delete,
+      data: { confirm: "Are you sure?" },
+      class: "btn btn-danger text-white"
+    %>
+  </div>
+<% end %>
 
 <%= render "posts/comments", post: @post %>
 
-<%= link_to "Back to posts", posts_path %>
+<%= link_to "Back to posts", posts_path, class: "btn btn-secondary text-white" %>

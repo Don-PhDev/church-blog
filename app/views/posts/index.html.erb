@@ -5,10 +5,13 @@
 
 <div id="posts">
   <% @posts.each do |post| %>
-    <span class="hor-divider"></span>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+    <div class="card shadow mb-3">
+      <div class="card-body">
+        <%= render post %>
+        <p>
+          <%= link_to "Show this post", post, class: "btn btn-primary text-white" %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
