@@ -8,9 +8,11 @@
     <small><%= post.posted_time_passed %></small>
   </p>
 
-  <p>
-    <strong><%= pluralize(post.comments.count, "comment") %></strong>
-  </p>
+  <% if controller.action_name != "show" %>
+    <p>
+      <strong><%= pluralize(post.comments.count, "comment") %></strong>
+    </p>
+  <% end %>
 
   <p>
     <strong>Body:</strong>
