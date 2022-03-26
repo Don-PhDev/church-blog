@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: %i[ create ]
   before_action :set_post
 
   def create

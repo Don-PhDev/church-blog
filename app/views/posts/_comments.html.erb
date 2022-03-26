@@ -4,4 +4,4 @@
   <%= render post.comments.by_recently_updated %>
 </div>
 
-<%= render "comments/new", post: post %>
+<%= render "comments/new", post: post if current_user %>
