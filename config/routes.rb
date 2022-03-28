@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   end
 
   root "posts#index"
+
+  get '*path', to: 'application#routing_error'
 end
