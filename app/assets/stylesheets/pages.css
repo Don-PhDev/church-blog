@@ -1,0 +1,38 @@
+.homepage {
+  width: 100%;
+  height: 1119px;
+  background: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+            ),
+            url("../assets/background.jpg")
+            center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.homepage_content {
+  position: relative;
+}
+
+.homepage_title {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 200px;
+  text-align: center;
+}
+
+.text-center > h1 {
+  color: #fff;
+}
+
+.text-center .fw-bold {
+  letter-spacing: 0.125rem;
+}
+
+.text-center .fw-lighter {
+  letter-spacing: 0.75rem;
+}
