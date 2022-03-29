@@ -1,5 +1,4 @@
 <%= form_with model: [ post, post.comments.build ] do |form| %>
-  Your comment: <br />
-  <%= form.text_area :body, size: "20x5" %>
-  <%= form.submit %>
+  <%= form.text_area :body, size: "30x3", placeholder: "Add a comment..." %>
+  <%= form.submit class: "btn btn-primary btn-sm" %>
 <% end %>
