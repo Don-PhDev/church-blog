@@ -1,17 +1,19 @@
-<div class="d-flex justify-content-between align-items-center">
-  <span class="display-4 font-monospace mb-3 fw-bold">Posts</span>
-  <span><%= link_to "New post", new_post_path, class: "btn btn-outline-warning" if current_user %></span>
-</div>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <span class="display-4 font-monospace mb-3 fw-bold">Posts</span>
+    <span><%= link_to "New post", new_post_path, class: "btn btn-outline-warning" if current_user %></span>
+  </div>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <div class="card shadow mb-3">
-      <div class="card-body">
-        <%= render post %>
-        <p>
-          <%= link_to "Show this post", post, class: "btn btn-primary text-white" %>
-        </p>
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <div class="card shadow mb-3">
+        <div class="card-body">
+          <%= render post %>
+          <p>
+            <%= link_to "Show this post", post, class: "btn btn-primary text-white" %>
+          </p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
