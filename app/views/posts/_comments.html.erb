@@ -1,7 +1,11 @@
-<h3>Comments</h3>
+<div class="card shadow mb-3">
+  <div class="card-body">
+    <h3>Comments</h3>
 
-<div id="comments">
-  <%= render post.comments.by_recently_updated %>
+    <div id="comments">
+      <%= render post.comments.by_recently_updated %>
+    </div>
+
+    <%= render "comments/new", post: post if current_user %>
+  </div>
 </div>
-
-<%= render "comments/new", post: post if current_user %>

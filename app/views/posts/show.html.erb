@@ -1,22 +1,8 @@
 <%= turbo_stream_from @post %>
 <div class="container">
-  <h2>Post</h2>
+  <span class="d-inline-block display-4 font-monospace mb-3 fw-bold">Post</span>
 
   <%= render @post %>
-
-  <% if current_user == @post.user %>
-    <div>
-      <%= link_to "Edit",
-        edit_post_path(@post),
-        class: "btn btn-primary text-white mb-2"
-      %>
-      <%= button_to "Delete",
-        @post, method: :delete,
-        data: { confirm: "Are you sure?" },
-        class: "btn btn-danger text-white"
-      %>
-    </div>
-  <% end %>
 
   <%= render "posts/comments", post: @post %>
 
