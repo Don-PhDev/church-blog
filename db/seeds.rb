@@ -4,15 +4,12 @@ def data_deleter
   User.delete_all
 end
 
-def admin_user_creator
+def data_creator
   AdminUser.create!(
     email: "admin@gmail.com",
     password: "password",
     password_confirmation: "password"
   )
-end
-
-def data_creator
   User.create(
     email: "don@gmail.com",
     password: "password",
@@ -59,10 +56,6 @@ def data_count_message
   puts "Comments: #{Comment.count}"
 end
 
-if Rails.env.development?
-  data_deleter
-  data_creator
-  data_count_message
-elsif Rails.env.production?
-  admin_user_creator
-end
+data_deleter
+data_creator
+data_count_message
