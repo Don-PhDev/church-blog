@@ -1,7 +1,7 @@
 ActiveAdmin.register Post do
-  includes :user
-
   menu parent: "Posts", priority: 100
+
+  permit_params :title, :body, :user_id
 
   index do
     selectable_column
@@ -29,13 +29,18 @@ ActiveAdmin.register Post do
     end
   end
 
-  permit_params :title, :created_at, :updated_at, :user_id
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 
   form do |f|
     f.semantic_errors
-    f.inputs do
-      f.input :user
+    f.inputs "Post" do
+      f.input :user, as: :select, collection: User.pluck(:email, :id), include_blank: true, allow_blank: false
       f.input :title
+      f.input :body, as: :quill_editor
     end
     f.actions
   end

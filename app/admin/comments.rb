@@ -1,6 +1,8 @@
 ActiveAdmin.register Comment, as: "User Comments" do
   menu parent: "Posts", priority: 300
 
+  permit_params :body, :post_id, :user_id
+
   index do
     selectable_column
     id_column
@@ -14,5 +16,15 @@ ActiveAdmin.register Comment, as: "User Comments" do
     column :created_at
     column :updated_at
     actions
+  end
+
+  form do |f|
+    f.semantic_errors
+    f.inputs "Comments" do
+      f.input :post, as: :select, collection: Post.pluck(:title, :id).reverse, include_blank: true, allow_blank: false
+      f.input :user, as: :select, collection: User.pluck(:email, :id), include_blank: true, allow_blank: false
+      f.input :body
+    end
+    f.actions
   end
 end
