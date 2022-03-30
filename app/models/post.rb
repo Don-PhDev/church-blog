@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   end
 
   def last_body
-    body_text&.last.split("]").last.squish
+    return "" if body_text&.last.split("]").last.squish == first_body
   end
 
   private
