@@ -1,0 +1,8 @@
+.post_content {
+  min-height: 32.8125rem;
+  max-width: 78.75rem;
+}
+
+.post_images > * {
+  margin: 0.125rem 0;
+}
