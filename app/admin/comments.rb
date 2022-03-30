@@ -13,14 +13,17 @@ ActiveAdmin.register Comment, as: "User Comments" do
     column "Body" do |comment|
       truncate(comment.body, length: 50)
     end
-    column :created_at
-    column :updated_at
+    column "Created / Latest Update At" do |comment|
+      comment.updated_at
+    end
+    column :approved_at
     actions
   end
 
   form do |f|
     f.semantic_errors
     f.inputs "Comments" do
+      f.input :approved_at
       f.input :post, as: :select, collection: Post.pluck(:title, :id).reverse, include_blank: true, allow_blank: false
       f.input :user, as: :select, collection: User.pluck(:email, :id), include_blank: true, allow_blank: false
       f.input :body

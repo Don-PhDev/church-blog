@@ -3,7 +3,7 @@
     <h3>Comments</h3>
 
     <div id="comments">
-      <%= render post.comments.by_recently_updated %>
+      <%= render post.comments.approved.by_recently_updated %>
     </div>
 
     <%= render "comments/new", post: post if current_user %>

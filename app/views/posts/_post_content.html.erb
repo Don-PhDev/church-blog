@@ -12,7 +12,7 @@
 
       <% if controller.action_name != "show" %>
         <p>
-          <strong><%= pluralize(post.comments.count, "comment") %></strong>
+          <strong><%= pluralize(post.comments.approved.count, "comment") %></strong>
         </p>
       <% end %>
 

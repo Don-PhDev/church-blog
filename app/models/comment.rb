@@ -8,4 +8,6 @@ class Comment < ApplicationRecord
   def commented_time_ago
     posted_time_passed.downcase.split(" ").drop(1).join(" ")
   end
+
+  scope :approved, -> { where.not(approved_at: nil) }
 end
