@@ -18,9 +18,9 @@
 
       <p>
         <strong>Body:</strong>
-        <p>
-          <%= truncate(post.first_body, length: 450) %>
-        </p>
+        <%# <p> %>
+        <%#   <%= truncate(post.first_body, length: 450) %1> %>
+        <%# </p> %>
 
         <% if controller.action_name != "show" %>
           <p class="post_images">
@@ -33,7 +33,7 @@
           </p>
 
           <p>
-            <%= truncate(post.last_body, length: 450) %>
+            <%= truncate(post.body_joined_text, length: 800) %>
           </p>
         <% else %>
           <%= post.body %>

@@ -6,12 +6,18 @@ class Post < ApplicationRecord
   has_rich_text :body
   has_many :comments, dependent: :destroy
 
+  def body_joined_text
+    return first_body if first_body == last_body
+
+    [first_body, last_body].join(" ").squeeze(" ")
+  end
+
   def first_body
     body_text&.first.squish
   end
 
   def last_body
-    return "" if body_text&.last.split("]").last.squish == first_body
+    body_text&.last.split("]").last.squish
   end
 
   private
