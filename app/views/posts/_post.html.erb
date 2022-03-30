@@ -1,49 +1,9 @@
 <% if controller.action_name == "show" %>
   <div class="card shadow mb-3">
     <div class="card-body">
-      <div id="<%= dom_id post %>">
-        <p>
-          <strong>Title:</strong>
-          <%= post.title %>
-        </p>
-
-        <p>
-          <small><%= post.posted_time_passed %></small>
-        </p>
-
-        <% if controller.action_name != "show" %>
-          <p>
-            <strong><%= pluralize(post.comments.count, "comment") %></strong>
-          </p>
-        <% end %>
-
-        <p>
-          <strong>Body:</strong>
-          <%= post.body %>
-        </p>
-      </div>
+      <%= render "post_content", post: post %>
     </div>
   </div>
 <% else %>
-  <div id="<%= dom_id post %>">
-    <p>
-      <strong>Title:</strong>
-      <%= post.title %>
-    </p>
-
-    <p>
-      <small><%= post.posted_time_passed %></small>
-    </p>
-
-    <% if controller.action_name != "show" %>
-      <p>
-        <strong><%= pluralize(post.comments.count, "comment") %></strong>
-      </p>
-    <% end %>
-
-    <p>
-      <strong>Body:</strong>
-      <%= post.body %>
-    </p>
-  </div>
+  <%= render "post_content", post: post %>
 <% end %>
