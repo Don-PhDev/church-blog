@@ -1,7 +1,8 @@
 <div id="<%= dom_id comment %>">
   <div class="comment-body">
+    <h6><%= comment.user.username %></h6>
     <p class="text-wrap"><%= comment.body %>
-      — <small><%= comment.posted_time_passed.downcase.split(" ").drop(1).join(" ") %></small>
+      — <small><%= comment.commented_time_ago %></small>
     </p>
     <span class="hor-divider"></span>
   </div>
