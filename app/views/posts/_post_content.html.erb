@@ -1,21 +1,44 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
+<div class="post_content">
+  <%= link_to post_path(post), class: "text-decoration-none text-dark" do %>
+    <div id="<%= dom_id post %>">
+      <p>
+        <strong>Title:</strong>
+        <%= post.title %>
+      </p>
 
-  <p>
-    <small><%= post.posted_time_passed %></small>
-  </p>
+      <p>
+        <small><%= post.posted_time_passed %></small>
+      </p>
 
-  <% if controller.action_name != "show" %>
-    <p>
-      <strong><%= pluralize(post.comments.count, "comment") %></strong>
-    </p>
+      <% if controller.action_name != "show" %>
+        <p>
+          <strong><%= pluralize(post.comments.count, "comment") %></strong>
+        </p>
+      <% end %>
+
+      <p>
+        <strong>Body:</strong>
+        <p>
+          <%= truncate(post.first_body, length: 450) %>
+        </p>
+
+        <% if controller.action_name != "show" %>
+          <p class="post_images">
+            <% post.body.embeds.first(3).each do |img| %>
+              <%= image_tag img.blob.representation(
+                resize_to_limit: [400, 400]
+                )
+              %>
+            <% end %>
+          </p>
+
+          <p>
+            <%= truncate(post.last_body, length: 450) %>
+          </p>
+        <% else %>
+          <%= post.body %>
+        <% end %>
+      </p>
+    </div>
   <% end %>
-
-  <p>
-    <strong>Body:</strong>
-    <%= post.body %>
-  </p>
 </div>
