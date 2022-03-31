@@ -22,7 +22,7 @@ ActiveAdmin.register Comment, as: "User Comments" do
 
   form do |f|
     f.semantic_errors
-    f.object.approved_at = f.object.approved_at.to_date if f.object.persisted?
+    f.object.approved_at = f.object.approved_at&.to_date if f.object.persisted?
     f.inputs "Comments" do
       f.input :approved_at,
         as: :datepicker,
