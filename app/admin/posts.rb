@@ -38,7 +38,9 @@ ActiveAdmin.register Post do
   form do |f|
     f.semantic_errors
     f.inputs "Post" do
-      f.input :user, as: :select, collection: User.pluck(:email, :id), include_blank: true, allow_blank: false
+      f.input :user,
+        as: :select,
+        collection: User.pluck(:email, :id)
       f.input :title
       f.input :body, as: :quill_editor
     end

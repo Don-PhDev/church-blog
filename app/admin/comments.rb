@@ -22,11 +22,23 @@ ActiveAdmin.register Comment, as: "User Comments" do
 
   form do |f|
     f.semantic_errors
+    f.object.approved_at = Date.current unless f.object.new_record?
     f.inputs "Comments" do
-      f.input :approved_at
-      f.input :post, as: :select, collection: Post.pluck(:title, :id).reverse, include_blank: true, allow_blank: false
-      f.input :user, as: :select, collection: User.pluck(:email, :id), include_blank: true, allow_blank: false
-      f.input :body
+      f.input :approved_at, as: :datepicker, input_html: { autofocus: true }
+
+      f.input :post,
+        as: :select,
+        collection: Post.pluck(:title, :id).reverse,
+        input_html: { disabled: f.object.persisted? }
+
+      f.input :user,
+        as: :select,
+        collection: User.pluck(:email, :id),
+        input_html: {
+          disabled: f.object.persisted?
+        }
+
+      f.input :body, input_html: { disabled: f.object.persisted? }
     end
     f.actions
   end
