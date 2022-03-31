@@ -1,6 +1,9 @@
 <%= turbo_stream_from @post %>
 <div class="container">
-  <span class="d-inline-block display-4 font-monospace mb-3 fw-bold">Post</span>
+  <div class="d-flex justify-content-between align-items-center">
+    <span class="d-inline-block display-4 font-monospace mb-3 fw-bold">Post</span>
+    <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-primary" if Rails.env.development? %>
+  </div>
 
   <%= render @post %>
 
