@@ -22,9 +22,11 @@ ActiveAdmin.register Comment, as: "User Comments" do
 
   form do |f|
     f.semantic_errors
-    f.object.approved_at = f.object.persisted? ? f.object.approved_at.to_date : Date.current
+    f.object.approved_at = f.object.approved_at.to_date if f.object.persisted?
     f.inputs "Comments" do
-      f.input :approved_at, as: :datepicker, input_html: { autofocus: true }
+      f.input :approved_at,
+        as: :datepicker,
+        input_html: { autofocus: f.object.persisted? }
 
       f.input :post,
         as: :select,
