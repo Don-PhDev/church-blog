@@ -25,10 +25,7 @@
         <% if controller.action_name != "show" %>
           <p class="post_images">
             <% post.body.embeds.first(3).each do |img| %>
-              <%= image_tag img.blob.representation(
-                resize_to_limit: [400, 400]
-                )
-              %>
+              <%= image_tag img.blob, class: "post_image" %>
             <% end %>
           </p>
 
