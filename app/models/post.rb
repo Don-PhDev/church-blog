@@ -13,11 +13,11 @@ class Post < ApplicationRecord
   end
 
   def first_body
-    body_text&.first.squish
+    body_text&.first&.squish
   end
 
   def last_body
-    body_text&.last.split("]").last.squish
+    body_text&.last&.split("]")&.last&.squish
   end
 
   private
