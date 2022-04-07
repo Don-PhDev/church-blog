@@ -50,12 +50,15 @@ def data_creator
   end
 end
 
-def data_count_message
-  puts "Users: #{User.count}"
-  puts "Posts: #{Post.count}"
+def display_results
+  puts "-------------------------------"
+  puts "Seed results:"
+  puts "-------------------------------"
+  puts "Users:    #{User.count}"
+  puts "Posts:    #{Post.count}"
   puts "Comments: #{Comment.count}"
 end
 
 data_deleter
 data_creator
-data_count_message
+display_results
